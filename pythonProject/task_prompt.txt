@@ -1,0 +1,24 @@
+You are given three CSV files:
+- customers.csv (customer information)
+- purchases.csv (transaction records)
+- matches.csv (customer pairing information)
+
+TASK: Find the top 3 customers who have the highest "customer value score". 
+
+Definition of "customer value score":
+1. Only consider customers with account_status = 0 (active accounts)
+2. For each customer, calculate:
+   - Total purchase amount from VALID transactions only (is_valid = 1)
+   - Multiply by their reliability_score (higher is better)
+   - Add 10 points for each matched customer they have (from matches.csv)
+3. BUT: For customers whose reliability_score is > 700, double their total
+4. Remove any duplicate customers (based on customer_id) - keep only the most recent signup_date
+
+IMPORTANT:
+- Handle NaN values appropriately (treat as 0)
+- Be careful with floating point precision when comparing values
+- Transaction dates are messy - you need to parse them correctly
+- The answer should be a list of customer_ids in descending order of score
+- Print ONLY the list: [id1, id2, id3]
+
+Example format: [1042, 387, 2156]

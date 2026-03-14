@@ -1,0 +1,22 @@
+{
+  "correct_answer": [
+    1072,
+    1018,
+    1363
+  ],
+  "model_answer": [
+    1072,
+    1018,
+    1363
+  ],
+  "intersection": [
+    1072,
+    1018,
+    1363
+  ],
+  "false_positives": [],
+  "false_negatives": [],
+  "jaccard_similarity": 1.0,
+  "size_penalty": 0.6,
+  "final_score": 0.6
+}
