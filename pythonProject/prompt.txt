@@ -1,0 +1,76 @@
+You are given six CSV files:
+
+- customers.csv
+- events.csv
+- tag_periods.csv
+- matches.csv
+- blocked_pairs.csv
+- monthly_adjustments.csv
+
+Find the five active customers with the highest final network score.
+
+Definitions and rules:
+
+1. If a customer appears multiple times in customers.csv and the records differ only by microseconds in signup_date, treat them as the same customer and keep only one record.
+
+2. A customer is active for the final ranking if account_status == 0 in customers.csv.
+
+3. Process events in chronological order separately for each customer.
+
+4. event_type can be one of:
+   - purchase
+   - refund
+   - pause
+   - resume
+
+5. A customer starts in the active state.
+
+6. purchase events count only if:
+   - the customer is currently active
+   - the event_date is on or after signup_date
+
+7. The value of a counted purchase is:
+   amount * (1 + tax_rate)
+
+8. If amount is missing, treat it as 0.
+
+9. refund events do not subtract directly from the monthly total.
+   Instead, a refund cancels the most recent unmatched counted purchase by the same customer in the same calendar month.
+   If there is no such purchase, ignore the refund.
+
+10. pause changes the customer’s state to inactive starting from that event.
+    resume changes the state back to active starting from that event.
+
+11. Compute each customer’s monthly net total as the sum of counted purchases that remain unmatched after processing refunds.
+
+12. If monthly_adjustments.csv contains a row for a given (customer_id, month), use replacement_total from that row instead of the computed monthly net total for that customer-month.
+    The replacement_total replaces the computed value; it is not added to it.
+
+13. In matches.csv, pairs are undirected:
+    (A, B) and (B, A) are the same pair.
+
+14. If the same undirected pair appears multiple times, keep only one occurrence.
+
+15. Remove any undirected pair that appears in blocked_pairs.csv.
+
+16. A matched customer B may contribute to customer A in a month only if:
+    - B has reliability_score >= 700
+    - A and B share at least one tag active in that month according to tag_periods.csv
+
+17. For a given month, if two customers share multiple tags active in that month, the contribution weight is the number of distinct shared active tags in that month.
+
+18. The weighted monthly contribution from B to A is:
+    contribution_weight * monthly_net_total_of_B_for_that_month
+
+19. For each recipient customer and month, keep only the top 2 contributing matched customers by weighted monthly contribution.
+    Break ties by smaller contributing customer_id.
+
+20. A customer’s final network score is the sum over all months of:
+    own_effective_monthly_total + 0.2 * sum(top 2 weighted monthly contributions received in that month)
+
+21. Customers with account_status != 0 cannot appear in the final answer, but they may still contribute to others.
+
+Return only the final answer in this exact format:
+[id1,id2,id3,id4,id5]
+
+Do not print anything else.

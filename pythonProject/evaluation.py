@@ -1,55 +1,55 @@
 import json
 
-
 def score_answer(correct_answer_file, model_answer_file):
-    """
-    Score the LLM's answer against the correct answer
-    """
-    # Load answers
-    with open(correct_answer_file, 'r') as f:
+    with open(correct_answer_file, "r") as f:
         correct = json.load(f)
 
-    with open(model_answer_file, 'r') as f:
+    with open(model_answer_file, "r") as f:
         model = json.load(f)
 
-    if not isinstance(model, list):
-        return 0
+    if not isinstance(correct, list) or not isinstance(model, list):
+        return 0.0
+
+    if len(correct) != 5:
+        raise ValueError("Correct answer must contain exactly 5 IDs.")
+
+    if len(model) != 5:
+        return 0.0
+
+    try:
+        correct = [int(x) for x in correct]
+        model = [int(x) for x in model]
+    except Exception:
+        return 0.0
+
+    if len(set(model)) != 5:
+        return 0.0
 
     correct_set = set(correct)
     model_set = set(model)
 
-    if not model_set:
-        return 0
+    overlap_score = len(correct_set & model_set) / 5.0
+    position_score = sum(1 for a, b in zip(correct, model) if a == b) / 5.0
 
-    # Jaccard similarity
-    intersection = len(correct_set & model_set)
-    union = len(correct_set | model_set)
-    jaccard = intersection / union if union > 0 else 0
+    final_score = round(0.75 * overlap_score + 0.25 * position_score, 4)
 
-    # Penalty for wrong size (should be exactly 7)
-    size_penalty = 1 - abs(len(model_set) - 7) * 0.1
-    size_penalty = max(0, min(1, size_penalty))
-
-    final_score = jaccard * size_penalty
-
-    # Save score
-    score_result = {
+    result = {
         "correct_answer": correct,
         "model_answer": model,
-        "intersection": list(correct_set & model_set),
-        "false_positives": list(model_set - correct_set),
-        "false_negatives": list(correct_set - model_set),
-        "jaccard_similarity": round(jaccard, 4),
-        "size_penalty": round(size_penalty, 4),
-        "final_score": round(final_score, 4)
+        "overlap_count": len(correct_set & model_set),
+        "overlap_score": round(overlap_score, 4),
+        "position_score": round(position_score, 4),
+        "missing_ids": sorted(list(correct_set - model_set)),
+        "extra_ids": sorted(list(model_set - correct_set)),
+        "final_score": final_score,
     }
 
-    with open('score_result.json', 'w') as f:
-        json.dump(score_result, f, indent=2)
+    with open("score_result.json", "w") as f:
+        json.dump(result, f, indent=2)
 
     print(f"Score: {final_score:.4f}")
     return final_score
 
 
-# Calculate score
-score = score_answer('correct_answer.json', 'model_output.json')
+# Example usage
+score = score_answer("correct_answer.json", "model_output.json")
