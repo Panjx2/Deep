@@ -1,0 +1,33 @@
+You are given a synthetic dataset in `synthetic_factory_log.csv`.
+Use only this file (no external data). Execute Python code to solve the task.
+
+Task
+1) Load the dataset.
+2) For each row compute `row_index` using:
+   row_eff = (items_out * quality_multiplier) - (0.75*rework_minutes) - (1.15*downtime_minutes) + flow_bonus
+   row_index = (row_eff / energy_kwh) * shift_multiplier
+
+   Mapping tables:
+   quality_multiplier: ok->1.00, review->0.91
+   shift_multiplier: dawn->1.02, day->1.00, swing->0.99, night->0.97
+   flow_bonus: stable->0.0, spike->-6.0, dip->-3.5
+
+3) Winsorize `row_index` globally using median ± 2.8*MAD (median absolute deviation).
+   Call the clipped value `clipped_index`.
+
+4) Compute each unit's final score:
+   final_score = 0.6 * mean(clipped_index for 2026-02-01..2026-02-05)
+               + 0.4 * mean(clipped_index for 2026-02-06..2026-02-10)
+
+5) Let `ranked_units` be top 3 unit_id values by `final_score` descending.
+   Tie-breaker (if needed): alphabetical unit_id.
+
+6) For each date compute average `clipped_index` across all units.
+   Define `alert_days` as dates whose daily average is STRICTLY below the 10th percentile of daily averages
+   (linear interpolation).
+
+7) Compute:
+   checksum = round(sum(final_score of top 3 units)*1000) + 17*len(alert_days)
+
+Output format (stdout, and nothing else):
+{"ranked_units":[...],"alert_days":[...],"checksum":number}

@@ -1,0 +1,12 @@
+Scoring function S in [0,1]
+
+Given ground truth GT and prediction P:
+1) Ranking score:
+   S_rank = (# exact position matches in ranked_units) / 3
+2) Alert-day score:
+   S_alert = F1 score between sets of alert_days
+3) Checksum score:
+   S_check = max(0, 1 - min(1, abs(P_checksum - GT_checksum)/200))
+
+Final score:
+S = 0.5*S_rank + 0.3*S_alert + 0.2*S_check
