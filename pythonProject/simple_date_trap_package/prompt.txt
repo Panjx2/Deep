@@ -1,0 +1,43 @@
+You are given three CSV files:
+
+- customers.csv
+- events.csv
+- monthly_adjustments.csv
+
+Find the five active customers with the highest final adjusted spend.
+
+Definitions and rules:
+
+1. Treat rows as duplicates if all columns except signup_date are identical and the two signup_date values differ by less than 1 second. Keep the earlier row.
+
+2. A customer is active for the final ranking if account_status == 0 in customers.csv.
+
+3. Process events separately for each customer in chronological order.
+   If two events for the same customer have the same date, use smaller event_id first.
+
+4. event_type can be one of:
+   - purchase
+   - refund
+
+5. A purchase counts only if event_date is on or after signup_date.
+
+6. The value of a counted purchase is:
+   amount * (1 + tax_rate)
+
+7. If amount is missing, treat it as 0.
+
+8. A refund does not subtract directly from the monthly total.
+   Instead, it cancels the most recent unmatched counted purchase by the same customer in the same calendar month.
+   If there is no such purchase, ignore the refund.
+
+9. Compute each customer’s monthly net total as the sum of counted purchases that remain unmatched after processing refunds.
+
+10. If monthly_adjustments.csv contains a row for a given (customer_id, month), use replacement_total from that row instead of the computed monthly net total for that customer-month.
+    The replacement_total replaces the computed value; it is not added to it.
+
+11. A customer’s final adjusted spend is the sum of their effective monthly totals over all months.
+
+Return only the final answer in this exact format:
+[id1,id2,id3,id4,id5]
+
+Do not print anything else.

@@ -7,26 +7,16 @@
     1038
   ],
   "model_answer": [
-    1075,
-    1065,
-    1046,
-    1077,
-    1115
-  ],
-  "overlap_count": 1,
-  "overlap_score": 0.2,
-  "position_score": 0.0,
-  "missing_ids": [
     1003,
-    1038,
+    1077,
     1047,
-    1156
+    1156,
+    1038
   ],
-  "extra_ids": [
-    1046,
-    1065,
-    1075,
-    1115
-  ],
-  "final_score": 0.15
+  "overlap_count": 5,
+  "overlap_score": 1.0,
+  "position_score": 1.0,
+  "missing_ids": [],
+  "extra_ids": [],
+  "final_score": 1.0
 }

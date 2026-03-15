@@ -1,0 +1,26 @@
+{
+  "correct_answer": [
+    2005,
+    2001,
+    2003,
+    2004,
+    2000
+  ],
+  "model_answer": [
+    2001,
+    2003,
+    2004,
+    2000,
+    2002
+  ],
+  "overlap_count": 4,
+  "overlap_score": 0.8,
+  "position_score": 0.0,
+  "missing_ids": [
+    2005
+  ],
+  "extra_ids": [
+    2002
+  ],
+  "final_score": 0.6
+}

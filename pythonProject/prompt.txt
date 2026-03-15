@@ -69,7 +69,7 @@ Definitions and rules:
     own_effective_monthly_total + 0.2 * sum(top 2 weighted monthly contributions received in that month)
 
 21. Customers with account_status != 0 cannot appear in the final answer, but they may still contribute to others.
-
+There are three date formats
 Return only the final answer in this exact format:
 [id1,id2,id3,id4,id5]
 
