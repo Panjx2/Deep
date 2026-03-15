@@ -37,6 +37,8 @@ Definitions and rules:
 
 11. A customer’s final adjusted spend is the sum of their effective monthly totals over all months.
 
+12. In events.csv there are three types of date formats
+
 Return only the final answer in this exact format:
 [id1,id2,id3,id4,id5]
 
