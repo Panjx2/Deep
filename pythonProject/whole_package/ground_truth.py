@@ -1,8 +1,39 @@
 import json
-from pathlib import Path
 from collections import defaultdict
+from pathlib import Path
 
 import pandas as pd
+
+
+DEFAULT_SPECIAL_IDS = list(range(2000, 2010))
+DEFAULT_DEBUG_IDS = list(range(2000, 2010)) + [2200, 2201, 2300, 2301]
+
+
+def resolve_data_dir(data_dir: str | Path = "dataset") -> Path:
+    """Resolve the dataset directory.
+
+    Preferred layout is:
+        <data_dir>/customers.csv
+        <data_dir>/events.csv
+        <data_dir>/monthly_adjustments.csv
+
+    For convenience during local iteration, if those files are not present but the
+    current working directory contains them, fall back to the current directory.
+    """
+    data_dir = Path(data_dir)
+    required = ["customers.csv", "events.csv", "monthly_adjustments.csv"]
+
+    if all((data_dir / name).exists() for name in required):
+        return data_dir
+
+    cwd = Path(".")
+    if all((cwd / name).exists() for name in required):
+        return cwd
+
+    missing = [name for name in required if not (data_dir / name).exists()]
+    raise FileNotFoundError(
+        f"Could not find dataset files in '{data_dir}'. Missing: {missing}"
+    )
 
 
 def parse_event_date(x):
@@ -17,47 +48,67 @@ def parse_event_date(x):
     return pd.NaT
 
 
-def deduplicate_customers(customers: pd.DataFrame) -> pd.DataFrame:
+def deduplicate_customers(customers: pd.DataFrame):
     customers = customers.copy()
     customers["signup_dt"] = pd.to_datetime(customers["signup_date"], errors="coerce")
 
     group_cols = ["customer_id", "reliability_score", "potential_value", "account_status"]
     kept_rows = []
+    removed_rows = []
 
-    for _, g in customers.sort_values(group_cols + ["signup_dt"]).groupby(group_cols, sort=False):
+    for group_key, g in customers.sort_values(group_cols + ["signup_dt"]).groupby(group_cols, sort=False):
         g = g.sort_values("signup_dt").reset_index(drop=True)
-        keep_idx = []
         last_kept_time = None
 
-        for i, row in g.iterrows():
+        for _, row in g.iterrows():
             ts = row["signup_dt"]
             if pd.isna(ts):
+                removed_rows.append({
+                    "customer_id": int(row["customer_id"]),
+                    "reason": "invalid_signup_date",
+                    "signup_date": None,
+                    "group_key": tuple(group_key),
+                })
                 continue
+
             if last_kept_time is None or (ts - last_kept_time).total_seconds() >= 1.0:
-                keep_idx.append(i)
+                kept_rows.append(row.to_dict())
                 last_kept_time = ts
+            else:
+                removed_rows.append({
+                    "customer_id": int(row["customer_id"]),
+                    "reason": "duplicate_within_lt_1s",
+                    "signup_date": str(ts),
+                    "group_key": tuple(group_key),
+                })
 
-        if keep_idx:
-            kept_rows.append(g.loc[keep_idx])
+    out = pd.DataFrame(kept_rows)
+    if len(out) == 0:
+        out = customers.iloc[0:0].copy()
+    else:
+        out = out.sort_values(["customer_id", "signup_dt"]).reset_index(drop=True)
 
-    if not kept_rows:
-        return customers.iloc[0:0].copy()
-
-    out = pd.concat(kept_rows, ignore_index=True)
-    return out.sort_values(["customer_id", "signup_dt"]).reset_index(drop=True)
+    return out, removed_rows
 
 
-def compute_ground_truth(data_dir="dataset", special_ids=None):
+def compute_ground_truth(
+    data_dir: str | Path = "dataset",
+    special_ids=None,
+    debug_ids=None,
+):
     if special_ids is None:
-        special_ids = [2000, 2001, 2002, 2003, 2004, 2005]
+        special_ids = DEFAULT_SPECIAL_IDS
+    if debug_ids is None:
+        debug_ids = DEFAULT_DEBUG_IDS
 
-    data_dir = Path(data_dir)
+    data_dir = resolve_data_dir(data_dir)
 
     customers = pd.read_csv(data_dir / "customers.csv")
     events = pd.read_csv(data_dir / "events.csv")
     monthly_adjustments = pd.read_csv(data_dir / "monthly_adjustments.csv")
 
-    customers = deduplicate_customers(customers)
+    raw_customer_count = len(customers)
+    customers, removed_duplicates = deduplicate_customers(customers)
 
     events = events.copy()
     events["event_dt"] = events["event_date"].apply(parse_event_date)
@@ -69,7 +120,6 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
         on="customer_id",
         how="left",
     )
-
     events = events.sort_values(["customer_id", "event_dt", "event_id"]).reset_index(drop=True)
 
     monthly_rows = []
@@ -103,56 +153,60 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
                         "purchase_date": str(row.event_dt),
                         "value": value,
                     })
-                    event_debug_rows.append({
-                        "customer_id": int(row.customer_id),
-                        "event_id": int(row.event_id),
-                        "event_type": row.event_type,
-                        "event_date_raw": row.event_date,
-                        "parsed_event_dt": str(row.event_dt),
-                        "month": month,
-                        "action": "counted_purchase",
-                        "value": value,
-                        "matched_purchase_event_id": None,
-                    })
+                    action = "counted_purchase"
+                    matched_purchase_event_id = None
                 else:
-                    event_debug_rows.append({
-                        "customer_id": int(row.customer_id),
-                        "event_id": int(row.event_id),
-                        "event_type": row.event_type,
-                        "event_date_raw": row.event_date,
-                        "parsed_event_dt": str(row.event_dt),
-                        "month": month,
-                        "action": "ignored_purchase_before_signup",
-                        "value": None,
-                        "matched_purchase_event_id": None,
-                    })
+                    value = None
+                    action = "ignored_purchase_before_signup"
+                    matched_purchase_event_id = None
+
+                event_debug_rows.append({
+                    "customer_id": int(row.customer_id),
+                    "event_id": int(row.event_id),
+                    "event_type": row.event_type,
+                    "event_date_raw": row.event_date,
+                    "parsed_event_dt": str(row.event_dt),
+                    "month": month,
+                    "action": action,
+                    "value": value,
+                    "matched_purchase_event_id": matched_purchase_event_id,
+                })
 
             elif row.event_type == "refund":
                 if unmatched.get(month):
-                    matched = unmatched[month].pop()
-                    event_debug_rows.append({
-                        "customer_id": int(row.customer_id),
-                        "event_id": int(row.event_id),
-                        "event_type": row.event_type,
-                        "event_date_raw": row.event_date,
-                        "parsed_event_dt": str(row.event_dt),
-                        "month": month,
-                        "action": "refund_cancelled_purchase",
-                        "value": matched["value"],
-                        "matched_purchase_event_id": matched["purchase_event_id"],
-                    })
+                    matched = unmatched[month].pop()  # month-local LIFO cancellation
+                    action = "refund_cancelled_purchase"
+                    value = matched["value"]
+                    matched_purchase_event_id = matched["purchase_event_id"]
                 else:
-                    event_debug_rows.append({
-                        "customer_id": int(row.customer_id),
-                        "event_id": int(row.event_id),
-                        "event_type": row.event_type,
-                        "event_date_raw": row.event_date,
-                        "parsed_event_dt": str(row.event_dt),
-                        "month": month,
-                        "action": "ignored_refund_no_unmatched_purchase",
-                        "value": None,
-                        "matched_purchase_event_id": None,
-                    })
+                    action = "ignored_refund_no_unmatched_purchase"
+                    value = None
+                    matched_purchase_event_id = None
+
+                event_debug_rows.append({
+                    "customer_id": int(row.customer_id),
+                    "event_id": int(row.event_id),
+                    "event_type": row.event_type,
+                    "event_date_raw": row.event_date,
+                    "parsed_event_dt": str(row.event_dt),
+                    "month": month,
+                    "action": action,
+                    "value": value,
+                    "matched_purchase_event_id": matched_purchase_event_id,
+                })
+
+            else:
+                event_debug_rows.append({
+                    "customer_id": int(row.customer_id),
+                    "event_id": int(row.event_id),
+                    "event_type": row.event_type,
+                    "event_date_raw": row.event_date,
+                    "parsed_event_dt": str(row.event_dt),
+                    "month": month,
+                    "action": "ignored_unknown_event_type",
+                    "value": None,
+                    "matched_purchase_event_id": None,
+                })
 
         for month, vals in unmatched.items():
             monthly_rows.append((cid, month, float(sum(v["value"] for v in vals))))
@@ -166,6 +220,7 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
             .sum()
         )
 
+    monthly_adjustments = monthly_adjustments.copy()
     monthly_adjustments["replacement_total"] = pd.to_numeric(
         monthly_adjustments["replacement_total"], errors="coerce"
     )
@@ -197,10 +252,13 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
     final["final_adjusted_spend"] = final["final_adjusted_spend"].fillna(0.0)
 
     active = final[final["account_status"] == 0].copy()
-    active = active.sort_values(["final_adjusted_spend", "customer_id"], ascending=[False, True]).reset_index(drop=True)
+    active = active.sort_values(
+        ["final_adjusted_spend", "customer_id"],
+        ascending=[False, True],
+    ).reset_index(drop=True)
     active["rank"] = range(1, len(active) + 1)
 
-    top5 = active.head(5)["customer_id"].tolist()
+    top5 = [int(x) for x in active.head(5)["customer_id"].tolist()]
 
     special_summary = []
     for cid in special_ids:
@@ -209,9 +267,7 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
             continue
         rank_row = rank_row.iloc[0]
 
-        m = monthly[monthly["customer_id"] == cid].copy()
-        m = m.sort_values("month")
-
+        m = monthly[monthly["customer_id"] == cid].copy().sort_values("month")
         special_summary.append({
             "customer_id": int(cid),
             "rank": int(rank_row["rank"]),
@@ -231,13 +287,12 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
     top5_explanations = []
     for cid in top5:
         row = active[active["customer_id"] == cid].iloc[0]
-        m = monthly[monthly["customer_id"] == cid].sort_values("month")
-
-        explanation = {
+        m = monthly[monthly["customer_id"] == cid].copy().sort_values("month")
+        top5_explanations.append({
             "customer_id": int(cid),
             "rank": int(row["rank"]),
             "final_adjusted_spend": float(row["final_adjusted_spend"]),
-            "why_it_is_in_top5": [
+            "monthly_breakdown": [
                 {
                     "month": str(r["month"]),
                     "computed_month_total": float(r["computed_month_total"]),
@@ -247,24 +302,36 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
                 }
                 for _, r in m.iterrows()
             ],
-        }
-        top5_explanations.append(explanation)
+        })
 
     event_debug = pd.DataFrame(event_debug_rows)
-    special_event_debug = {}
-    for cid in special_ids:
+    debug_event_map = {}
+    for cid in debug_ids:
         df = event_debug[event_debug["customer_id"] == cid].copy()
         if len(df):
-            special_event_debug[str(cid)] = df.sort_values("event_id").to_dict(orient="records")
+            debug_event_map[str(cid)] = df.sort_values("event_id").to_dict(orient="records")
+
+    dedup_removed_by_customer = defaultdict(list)
+    for row in removed_duplicates:
+        dedup_removed_by_customer[str(row["customer_id"])].append({
+            "reason": row["reason"],
+            "signup_date": row["signup_date"],
+        })
 
     details = {
         "top5": top5,
         "top10_active_leaderboard": active.head(10)[
             ["customer_id", "rank", "final_adjusted_spend"]
         ].to_dict(orient="records"),
+        "dedup_summary": {
+            "raw_customer_rows": int(raw_customer_count),
+            "kept_customer_rows": int(len(customers)),
+            "removed_customer_rows": int(len(removed_duplicates)),
+            "removed_rows_by_customer": dict(dedup_removed_by_customer),
+        },
         "special_customer_summary": special_summary,
         "top5_explanations": top5_explanations,
-        "special_event_debug": special_event_debug,
+        "special_event_debug": debug_event_map,
     }
 
     return top5, details
@@ -273,10 +340,10 @@ def compute_ground_truth(data_dir="dataset", special_ids=None):
 if __name__ == "__main__":
     top5, details = compute_ground_truth("dataset")
 
-    with open("correct_answer.json", "w") as f:
+    with open("correct_answer.json", "w", encoding="utf-8") as f:
         json.dump(top5, f, indent=2)
 
-    with open("ground_truth_details.json", "w") as f:
+    with open("ground_truth_details.json", "w", encoding="utf-8") as f:
         json.dump(details, f, indent=2)
 
     print("Correct answer:", top5)

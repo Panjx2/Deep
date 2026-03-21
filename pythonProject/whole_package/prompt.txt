@@ -35,11 +35,17 @@ Definitions and rules:
 10. If monthly_adjustments.csv contains a row for a given (customer_id, month), use replacement_total from that row instead of the computed monthly net total for that customer-month.
     The replacement_total replaces the computed value; it is not added to it.
 
-11. A customer’s final adjusted spend is the sum of their effective monthly totals over all months.
+11. Final ranking
 
-12. In events.csv there are three types of date formats
+Rank active customers by final_adjusted_spend in descending order.
+If two customers have the same final_adjusted_spend, the customer with the smaller customer_id ranks higher.
+Return the top five customer IDs.
+
+12. In events.csv there are three types of date formats - up to you to find them
 
 Return only the final answer in this exact format:
 [id1,id2,id3,id4,id5]
 
 Do not print anything else.
+
+Be sure to use your tools to execute python code at some point.

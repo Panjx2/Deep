@@ -1,0 +1,821 @@
+{
+  "top5": [
+    2000,
+    2001,
+    2002,
+    2008,
+    2004
+  ],
+  "top10_active_leaderboard": [
+    {
+      "customer_id": 2000,
+      "rank": 1,
+      "final_adjusted_spend": 1600.0
+    },
+    {
+      "customer_id": 2001,
+      "rank": 2,
+      "final_adjusted_spend": 1550.0
+    },
+    {
+      "customer_id": 2002,
+      "rank": 3,
+      "final_adjusted_spend": 1500.0
+    },
+    {
+      "customer_id": 2008,
+      "rank": 4,
+      "final_adjusted_spend": 1450.0
+    },
+    {
+      "customer_id": 2004,
+      "rank": 5,
+      "final_adjusted_spend": 1400.0
+    },
+    {
+      "customer_id": 2005,
+      "rank": 6,
+      "final_adjusted_spend": 1390.0
+    },
+    {
+      "customer_id": 2006,
+      "rank": 7,
+      "final_adjusted_spend": 1380.0
+    },
+    {
+      "customer_id": 2007,
+      "rank": 8,
+      "final_adjusted_spend": 1370.0
+    },
+    {
+      "customer_id": 2003,
+      "rank": 9,
+      "final_adjusted_spend": 1360.0
+    },
+    {
+      "customer_id": 2009,
+      "rank": 10,
+      "final_adjusted_spend": 1350.0
+    }
+  ],
+  "dedup_summary": {
+    "raw_customer_rows": 152,
+    "kept_customer_rows": 136,
+    "removed_customer_rows": 16,
+    "removed_rows_by_customer": {
+      "1000": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-02-08 00:00:00.000001"
+        }
+      ],
+      "1001": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-03 00:00:00.000001"
+        }
+      ],
+      "1002": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-05 00:00:00.000001"
+        }
+      ],
+      "1003": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-12 00:00:00.000001"
+        }
+      ],
+      "1004": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-11 00:00:00.000001"
+        }
+      ],
+      "1005": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-15 00:00:00.000001"
+        }
+      ],
+      "1006": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-20 00:00:00.000001"
+        }
+      ],
+      "1007": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-15 00:00:00.000001"
+        }
+      ],
+      "1008": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-07 00:00:00.000001"
+        }
+      ],
+      "1009": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-21 00:00:00.000001"
+        }
+      ],
+      "2000": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-01 00:00:00.000001"
+        }
+      ],
+      "2001": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-01 00:00:00.000001"
+        }
+      ],
+      "2005": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-15 00:00:00.000001"
+        }
+      ],
+      "2006": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-03-15 00:00:00.000001"
+        }
+      ],
+      "2008": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-01 00:00:00.000001"
+        }
+      ],
+      "2200": [
+        {
+          "reason": "duplicate_within_lt_1s",
+          "signup_date": "2024-01-01 00:00:00.000001"
+        }
+      ]
+    }
+  },
+  "special_customer_summary": [
+    {
+      "customer_id": 2000,
+      "rank": 1,
+      "final_adjusted_spend": 1600.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 800.0,
+          "replacement_total": null,
+          "effective_month_total": 800.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 800.0,
+          "replacement_total": null,
+          "effective_month_total": 800.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2001,
+      "rank": 2,
+      "final_adjusted_spend": 1550.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 850.0,
+          "replacement_total": null,
+          "effective_month_total": 850.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2002,
+      "rank": 3,
+      "final_adjusted_spend": 1500.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 600.0,
+          "replacement_total": null,
+          "effective_month_total": 600.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 900.0,
+          "replacement_total": null,
+          "effective_month_total": 900.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2003,
+      "rank": 9,
+      "final_adjusted_spend": 1360.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 660.0,
+          "replacement_total": null,
+          "effective_month_total": 660.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2004,
+      "rank": 5,
+      "final_adjusted_spend": 1400.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2005,
+      "rank": 6,
+      "final_adjusted_spend": 1390.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-05",
+          "computed_month_total": 1390.0,
+          "replacement_total": null,
+          "effective_month_total": 1390.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2006,
+      "rank": 7,
+      "final_adjusted_spend": 1380.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-05",
+          "computed_month_total": 1380.0,
+          "replacement_total": null,
+          "effective_month_total": 1380.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2007,
+      "rank": 8,
+      "final_adjusted_spend": 1370.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-06",
+          "computed_month_total": 900.0,
+          "replacement_total": 200.0,
+          "effective_month_total": 200.0,
+          "used_adjustment": true
+        },
+        {
+          "month": "2024-07",
+          "computed_month_total": 1170.0,
+          "replacement_total": null,
+          "effective_month_total": 1170.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2008,
+      "rank": 4,
+      "final_adjusted_spend": 1450.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-08",
+          "computed_month_total": 950.0,
+          "replacement_total": null,
+          "effective_month_total": 950.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-09",
+          "computed_month_total": 500.0,
+          "replacement_total": null,
+          "effective_month_total": 500.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2009,
+      "rank": 10,
+      "final_adjusted_spend": 1350.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 650.0,
+          "replacement_total": null,
+          "effective_month_total": 650.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-03",
+          "computed_month_total": 0.0,
+          "replacement_total": null,
+          "effective_month_total": 0.0,
+          "used_adjustment": false
+        }
+      ]
+    }
+  ],
+  "top5_explanations": [
+    {
+      "customer_id": 2000,
+      "rank": 1,
+      "final_adjusted_spend": 1600.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 800.0,
+          "replacement_total": null,
+          "effective_month_total": 800.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 800.0,
+          "replacement_total": null,
+          "effective_month_total": 800.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2001,
+      "rank": 2,
+      "final_adjusted_spend": 1550.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 850.0,
+          "replacement_total": null,
+          "effective_month_total": 850.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2002,
+      "rank": 3,
+      "final_adjusted_spend": 1500.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 600.0,
+          "replacement_total": null,
+          "effective_month_total": 600.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 900.0,
+          "replacement_total": null,
+          "effective_month_total": 900.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2008,
+      "rank": 4,
+      "final_adjusted_spend": 1450.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-08",
+          "computed_month_total": 950.0,
+          "replacement_total": null,
+          "effective_month_total": 950.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-09",
+          "computed_month_total": 500.0,
+          "replacement_total": null,
+          "effective_month_total": 500.0,
+          "used_adjustment": false
+        }
+      ]
+    },
+    {
+      "customer_id": 2004,
+      "rank": 5,
+      "final_adjusted_spend": 1400.0,
+      "monthly_breakdown": [
+        {
+          "month": "2024-01",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        },
+        {
+          "month": "2024-02",
+          "computed_month_total": 700.0,
+          "replacement_total": null,
+          "effective_month_total": 700.0,
+          "used_adjustment": false
+        }
+      ]
+    }
+  ],
+  "special_event_debug": {
+    "2000": [
+      {
+        "customer_id": 2000,
+        "event_id": 288,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-10",
+        "parsed_event_dt": "2024-01-10 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 800.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2000,
+        "event_id": 289,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-13",
+        "parsed_event_dt": "2024-02-13 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 800.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2001": [
+      {
+        "customer_id": 2001,
+        "event_id": 290,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-11",
+        "parsed_event_dt": "2024-01-11 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 700.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2001,
+        "event_id": 291,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-14",
+        "parsed_event_dt": "2024-02-14 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 850.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2001,
+        "event_id": 292,
+        "event_type": "refund",
+        "event_date_raw": "2024-03-01",
+        "parsed_event_dt": "2024-03-01 00:00:00",
+        "month": "2024-03",
+        "action": "ignored_refund_no_unmatched_purchase",
+        "value": NaN,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2002": [
+      {
+        "customer_id": 2002,
+        "event_id": 293,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-12",
+        "parsed_event_dt": "2024-01-12 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 600.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2002,
+        "event_id": 294,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-15",
+        "parsed_event_dt": "2024-02-15 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 900.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2002,
+        "event_id": 295,
+        "event_type": "refund",
+        "event_date_raw": "2024-03-05",
+        "parsed_event_dt": "2024-03-05 00:00:00",
+        "month": "2024-03",
+        "action": "ignored_refund_no_unmatched_purchase",
+        "value": NaN,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2003": [
+      {
+        "customer_id": 2003,
+        "event_id": 296,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-13",
+        "parsed_event_dt": "2024-01-13 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 700.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2003,
+        "event_id": 297,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-16",
+        "parsed_event_dt": "2024-02-16 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 660.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2004": [
+      {
+        "customer_id": 2004,
+        "event_id": 298,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-14",
+        "parsed_event_dt": "2024-01-14 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 700.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2004,
+        "event_id": 299,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-17",
+        "parsed_event_dt": "2024-02-17 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 700.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2005": [
+      {
+        "customer_id": 2005,
+        "event_id": 300,
+        "event_type": "purchase",
+        "event_date_raw": "2024-05-10",
+        "parsed_event_dt": "2024-05-10 00:00:00",
+        "month": "2024-05",
+        "action": "counted_purchase",
+        "value": 1390.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2005,
+        "event_id": 301,
+        "event_type": "purchase",
+        "event_date_raw": "04/03/2024",
+        "parsed_event_dt": "2024-03-04 00:00:00",
+        "month": "2024-03",
+        "action": "ignored_purchase_before_signup",
+        "value": NaN,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2006": [
+      {
+        "customer_id": 2006,
+        "event_id": 302,
+        "event_type": "purchase",
+        "event_date_raw": "2024-05-11",
+        "parsed_event_dt": "2024-05-11 00:00:00",
+        "month": "2024-05",
+        "action": "counted_purchase",
+        "value": 1380.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2006,
+        "event_id": 303,
+        "event_type": "purchase",
+        "event_date_raw": "03-04-2024",
+        "parsed_event_dt": "2024-03-04 00:00:00",
+        "month": "2024-03",
+        "action": "ignored_purchase_before_signup",
+        "value": NaN,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2007": [
+      {
+        "customer_id": 2007,
+        "event_id": 304,
+        "event_type": "purchase",
+        "event_date_raw": "2024-06-10",
+        "parsed_event_dt": "2024-06-10 00:00:00",
+        "month": "2024-06",
+        "action": "counted_purchase",
+        "value": 900.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2007,
+        "event_id": 305,
+        "event_type": "purchase",
+        "event_date_raw": "2024-07-10",
+        "parsed_event_dt": "2024-07-10 00:00:00",
+        "month": "2024-07",
+        "action": "counted_purchase",
+        "value": 1170.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2008": [
+      {
+        "customer_id": 2008,
+        "event_id": 306,
+        "event_type": "purchase",
+        "event_date_raw": "2024-08-01",
+        "parsed_event_dt": "2024-08-01 00:00:00",
+        "month": "2024-08",
+        "action": "counted_purchase",
+        "value": 950.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2008,
+        "event_id": 307,
+        "event_type": "purchase",
+        "event_date_raw": "2024-08-10",
+        "parsed_event_dt": "2024-08-10 00:00:00",
+        "month": "2024-08",
+        "action": "counted_purchase",
+        "value": 100.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2008,
+        "event_id": 308,
+        "event_type": "refund",
+        "event_date_raw": "2024-08-20",
+        "parsed_event_dt": "2024-08-20 00:00:00",
+        "month": "2024-08",
+        "action": "refund_cancelled_purchase",
+        "value": 100.0,
+        "matched_purchase_event_id": 307.0
+      },
+      {
+        "customer_id": 2008,
+        "event_id": 309,
+        "event_type": "purchase",
+        "event_date_raw": "2024-09-05",
+        "parsed_event_dt": "2024-09-05 00:00:00",
+        "month": "2024-09",
+        "action": "counted_purchase",
+        "value": 500.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2009": [
+      {
+        "customer_id": 2009,
+        "event_id": 310,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-20",
+        "parsed_event_dt": "2024-01-20 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 700.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2009,
+        "event_id": 311,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-18",
+        "parsed_event_dt": "2024-02-18 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 650.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2009,
+        "event_id": 312,
+        "event_type": "purchase",
+        "event_date_raw": "2024-03-05",
+        "parsed_event_dt": "2024-03-05 00:00:00",
+        "month": "2024-03",
+        "action": "counted_purchase",
+        "value": 0.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2200": [
+      {
+        "customer_id": 2200,
+        "event_id": 313,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-05",
+        "parsed_event_dt": "2024-01-05 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 2500.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2200,
+        "event_id": 314,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-05",
+        "parsed_event_dt": "2024-02-05 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 2400.0,
+        "matched_purchase_event_id": NaN
+      }
+    ],
+    "2201": [
+      {
+        "customer_id": 2201,
+        "event_id": 315,
+        "event_type": "purchase",
+        "event_date_raw": "2024-01-06",
+        "parsed_event_dt": "2024-01-06 00:00:00",
+        "month": "2024-01",
+        "action": "counted_purchase",
+        "value": 2450.0,
+        "matched_purchase_event_id": NaN
+      },
+      {
+        "customer_id": 2201,
+        "event_id": 316,
+        "event_type": "purchase",
+        "event_date_raw": "2024-02-06",
+        "parsed_event_dt": "2024-02-06 00:00:00",
+        "month": "2024-02",
+        "action": "counted_purchase",
+        "value": 2350.0,
+        "matched_purchase_event_id": NaN
+      }
+    ]
+  }
+}

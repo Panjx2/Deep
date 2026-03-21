@@ -1,0 +1,1913 @@
+{
+  "summary": {
+    "num_runs": 5,
+    "scores": [
+      0.6,
+      1.0,
+      0.6,
+      0.3,
+      0.6
+    ],
+    "mean_score": 0.62,
+    "median_score": 0.6,
+    "min_score": 0.3,
+    "max_score": 1.0,
+    "stdev_score": 0.2227,
+    "exact_match_rate": 0.2,
+    "num_unique_answers": 3,
+    "most_common_answer": [
+      2005,
+      2000,
+      2001,
+      2002,
+      2008
+    ],
+    "exact_top5": [
+      2000,
+      2001,
+      2002,
+      2008,
+      2004
+    ],
+    "num_diagnostic_clusters": 10,
+    "num_non_discriminative_clusters": 1,
+    "run_results": [
+      {
+        "file": "dataset/model_output_1.json",
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2005,
+          2000,
+          2001,
+          2002,
+          2008
+        ],
+        "exact_match": false,
+        "overlap_count": 4,
+        "overlap_score": 0.8,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.6608,
+        "missing_ids": [
+          2004
+        ],
+        "extra_ids": [
+          2005
+        ],
+        "final_score": 0.6
+      },
+      {
+        "file": "dataset/model_output_2.json",
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "exact_match": true,
+        "overlap_count": 5,
+        "overlap_score": 1.0,
+        "position_hits": 5,
+        "position_score": 1.0,
+        "ndcg_at_5": 1.0,
+        "missing_ids": [],
+        "extra_ids": [],
+        "final_score": 1.0
+      },
+      {
+        "file": "dataset/model_output_3.json",
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2005,
+          2000,
+          2001,
+          2002,
+          2008
+        ],
+        "exact_match": false,
+        "overlap_count": 4,
+        "overlap_score": 0.8,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.6608,
+        "missing_ids": [
+          2004
+        ],
+        "extra_ids": [
+          2005
+        ],
+        "final_score": 0.6
+      },
+      {
+        "file": "dataset/model_output_4.json",
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2007,
+          2008,
+          2005,
+          2006,
+          2000
+        ],
+        "exact_match": false,
+        "overlap_count": 2,
+        "overlap_score": 0.4,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.3452,
+        "missing_ids": [
+          2001,
+          2002,
+          2004
+        ],
+        "extra_ids": [
+          2005,
+          2006,
+          2007
+        ],
+        "final_score": 0.3
+      },
+      {
+        "file": "dataset/model_output_5.json",
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2005,
+          2000,
+          2001,
+          2002,
+          2008
+        ],
+        "exact_match": false,
+        "overlap_count": 4,
+        "overlap_score": 0.8,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.6608,
+        "missing_ids": [
+          2004
+        ],
+        "extra_ids": [
+          2005
+        ],
+        "final_score": 0.6
+      }
+    ]
+  },
+  "scenario_catalog": [
+    {
+      "scenario_name": "dash_dayfirst__add",
+      "top5": [
+        2006,
+        2007,
+        2000,
+        2001,
+        2002
+      ],
+      "config": {
+        "name": "dash_dayfirst__add",
+        "date_mode": "dash_dayfirst",
+        "adjustment_mode": "add",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "dash_dayfirst__replace",
+      "top5": [
+        2006,
+        2000,
+        2001,
+        2002,
+        2008
+      ],
+      "config": {
+        "name": "dash_dayfirst__replace",
+        "date_mode": "dash_dayfirst",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "exact__add",
+      "top5": [
+        2007,
+        2000,
+        2001,
+        2002,
+        2008
+      ],
+      "config": {
+        "name": "exact__add",
+        "date_mode": "exact",
+        "adjustment_mode": "add",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "exact__replace",
+      "top5": [
+        2000,
+        2001,
+        2002,
+        2008,
+        2004
+      ],
+      "config": {
+        "name": "exact__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "generic_dayfirst_false__replace",
+      "top5": [
+        2005,
+        2000,
+        2001,
+        2002,
+        2008
+      ],
+      "config": {
+        "name": "generic_dayfirst_false__replace",
+        "date_mode": "generic_dayfirst_false",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "generic_dayfirst_true__replace",
+      "top5": [
+        2006,
+        2007,
+        2000,
+        2001,
+        2008
+      ],
+      "config": {
+        "name": "generic_dayfirst_true__replace",
+        "date_mode": "generic_dayfirst_true",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "ignore_signup_gate__replace",
+      "top5": [
+        2005,
+        2006,
+        2000,
+        2001,
+        2002
+      ],
+      "config": {
+        "name": "ignore_signup_gate__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "ignore_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "missing_amount_nan__replace",
+      "top5": [
+        2000,
+        2001,
+        2002,
+        2008,
+        2004
+      ],
+      "config": {
+        "name": "missing_amount_nan__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "nan"
+      }
+    },
+    {
+      "scenario_name": "refund_direct_subtract__replace",
+      "top5": [
+        2000,
+        2001,
+        2008,
+        2004,
+        2005
+      ],
+      "config": {
+        "name": "refund_direct_subtract__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "direct_subtract",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "refund_fifo_same_month__replace",
+      "top5": [
+        2000,
+        2001,
+        2002,
+        2004,
+        2005
+      ],
+      "config": {
+        "name": "refund_fifo_same_month__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_fifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "refund_lifo_any_month__replace",
+      "top5": [
+        2000,
+        2008,
+        2004,
+        2005,
+        2006
+      ],
+      "config": {
+        "name": "refund_lifo_any_month__replace",
+        "date_mode": "exact",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "any_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "slash_monthfirst__add",
+      "top5": [
+        2005,
+        2007,
+        2000,
+        2001,
+        2002
+      ],
+      "config": {
+        "name": "slash_monthfirst__add",
+        "date_mode": "slash_monthfirst",
+        "adjustment_mode": "add",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    },
+    {
+      "scenario_name": "slash_monthfirst__replace",
+      "top5": [
+        2005,
+        2000,
+        2001,
+        2002,
+        2008
+      ],
+      "config": {
+        "name": "slash_monthfirst__replace",
+        "date_mode": "slash_monthfirst",
+        "adjustment_mode": "replace",
+        "refund_mode": "cancel_lifo",
+        "refund_scope": "same_month",
+        "purchase_gate": "on_or_after_signup",
+        "missing_amount_mode": "zero"
+      }
+    }
+  ],
+  "non_discriminative_clusters": [
+    {
+      "scenario_names": [
+        "missing_amount_nan__replace"
+      ],
+      "top5": [
+        2000,
+        2001,
+        2002,
+        2008,
+        2004
+      ]
+    }
+  ],
+  "diagnoses": [
+    {
+      "model_answer": [
+        2005,
+        2000,
+        2001,
+        2002,
+        2008
+      ],
+      "frequency": 3,
+      "score_vs_exact": {
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2005,
+          2000,
+          2001,
+          2002,
+          2008
+        ],
+        "exact_match": false,
+        "overlap_count": 4,
+        "overlap_score": 0.8,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.6608,
+        "missing_ids": [
+          2004
+        ],
+        "extra_ids": [
+          2005
+        ],
+        "final_score": 0.6
+      },
+      "diagnosis_ambiguous": true,
+      "diagnosis_confidence": "high",
+      "diagnosis_best_score": 1.0,
+      "cluster_level_ambiguity": false,
+      "scenario_level_ambiguity": true,
+      "best_explaining_clusters": [
+        {
+          "scenario_names": [
+            "generic_dayfirst_false__replace",
+            "slash_monthfirst__replace"
+          ],
+          "top5": [
+            2005,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 1.0,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": true,
+            "overlap_count": 5,
+            "overlap_score": 1.0,
+            "position_hits": 5,
+            "position_score": 1.0,
+            "ndcg_at_5": 1.0,
+            "missing_ids": [],
+            "extra_ids": [],
+            "final_score": 1.0
+          }
+        }
+      ],
+      "all_cluster_matches": [
+        {
+          "scenario_names": [
+            "generic_dayfirst_false__replace",
+            "slash_monthfirst__replace"
+          ],
+          "top5": [
+            2005,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 1.0,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": true,
+            "overlap_count": 5,
+            "overlap_score": 1.0,
+            "position_hits": 5,
+            "position_score": 1.0,
+            "ndcg_at_5": 1.0,
+            "missing_ids": [],
+            "extra_ids": [],
+            "final_score": 1.0
+          }
+        },
+        {
+          "scenario_names": [
+            "dash_dayfirst__replace"
+          ],
+          "top5": [
+            2006,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 0.8,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2006,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 4,
+            "position_score": 0.8,
+            "ndcg_at_5": 0.6608,
+            "missing_ids": [
+              2005
+            ],
+            "extra_ids": [
+              2006
+            ],
+            "final_score": 0.8
+          }
+        },
+        {
+          "scenario_names": [
+            "exact__add"
+          ],
+          "top5": [
+            2007,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 0.8,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2007,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 4,
+            "position_score": 0.8,
+            "ndcg_at_5": 0.6608,
+            "missing_ids": [
+              2005
+            ],
+            "extra_ids": [
+              2007
+            ],
+            "final_score": 0.8
+          }
+        },
+        {
+          "scenario_names": [
+            "ignore_signup_gate__replace"
+          ],
+          "top5": [
+            2005,
+            2006,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.65,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2005,
+              2006,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.786,
+            "missing_ids": [
+              2008
+            ],
+            "extra_ids": [
+              2006
+            ],
+            "final_score": 0.65
+          }
+        },
+        {
+          "scenario_names": [
+            "slash_monthfirst__add"
+          ],
+          "top5": [
+            2005,
+            2007,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.65,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2005,
+              2007,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.786,
+            "missing_ids": [
+              2008
+            ],
+            "extra_ids": [
+              2007
+            ],
+            "final_score": 0.65
+          }
+        },
+        {
+          "scenario_names": [
+            "refund_direct_subtract__replace"
+          ],
+          "top5": [
+            2000,
+            2001,
+            2008,
+            2004,
+            2005
+          ],
+          "score_vs_model": 0.6,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2000,
+              2001,
+              2008,
+              2004,
+              2005
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.8539,
+            "missing_ids": [
+              2002
+            ],
+            "extra_ids": [
+              2004
+            ],
+            "final_score": 0.6
+          }
+        },
+        {
+          "scenario_names": [
+            "refund_fifo_same_month__replace"
+          ],
+          "top5": [
+            2000,
+            2001,
+            2002,
+            2004,
+            2005
+          ],
+          "score_vs_model": 0.6,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2000,
+              2001,
+              2002,
+              2004,
+              2005
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.8539,
+            "missing_ids": [
+              2008
+            ],
+            "extra_ids": [
+              2004
+            ],
+            "final_score": 0.6
+          }
+        },
+        {
+          "scenario_names": [
+            "generic_dayfirst_true__replace"
+          ],
+          "top5": [
+            2006,
+            2007,
+            2000,
+            2001,
+            2008
+          ],
+          "score_vs_model": 0.5,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2006,
+              2007,
+              2000,
+              2001,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.4469,
+            "missing_ids": [
+              2002,
+              2005
+            ],
+            "extra_ids": [
+              2006,
+              2007
+            ],
+            "final_score": 0.5
+          }
+        },
+        {
+          "scenario_names": [
+            "dash_dayfirst__add"
+          ],
+          "top5": [
+            2006,
+            2007,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2006,
+              2007,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.4469,
+            "missing_ids": [
+              2005,
+              2008
+            ],
+            "extra_ids": [
+              2006,
+              2007
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "refund_lifo_any_month__replace"
+          ],
+          "top5": [
+            2000,
+            2008,
+            2004,
+            2005,
+            2006
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "model_answer": [
+              2000,
+              2008,
+              2004,
+              2005,
+              2006
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.6992,
+            "missing_ids": [
+              2001,
+              2002
+            ],
+            "extra_ids": [
+              2004,
+              2006
+            ],
+            "final_score": 0.45
+          }
+        }
+      ],
+      "explanation": {
+        "missing_ids": [
+          {
+            "customer": {
+              "customer_id": 2004,
+              "rank": 5,
+              "final_adjusted_spend": 1400.0
+            },
+            "scenario_customer": {
+              "customer_id": 2004,
+              "rank": 6,
+              "final_adjusted_spend": 1400.0
+            },
+            "customer_changed": false,
+            "rank_shift": 1,
+            "effective_spend_shift": 0.0,
+            "change_driver": "displaced_by_other",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2005,
+                "rank": 1,
+                "final_adjusted_spend": 2290.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": []
+          }
+        ],
+        "extra_ids": [
+          {
+            "customer": {
+              "customer_id": 2005,
+              "rank": 6,
+              "final_adjusted_spend": 1390.0
+            },
+            "scenario_customer": {
+              "customer_id": 2005,
+              "rank": 1,
+              "final_adjusted_spend": 2290.0
+            },
+            "customer_changed": true,
+            "rank_shift": -5,
+            "effective_spend_shift": 900.0,
+            "change_driver": "self_changed",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2004,
+                "rank": 5,
+                "final_adjusted_spend": 1400.0
+              }
+            ],
+            "event_month_differences": [
+              {
+                "event_id": 301,
+                "event_type": "purchase",
+                "event_date_raw": "04/03/2024",
+                "exact_event_dt": "2024-03-04 00:00:00",
+                "scenario_event_dt": "2024-04-03 00:00:00",
+                "exact_month": "2024-03",
+                "scenario_month": "2024-04"
+              }
+            ],
+            "monthly_differences": [
+              {
+                "month": "2024-04",
+                "exact_computed": 0.0,
+                "scenario_computed": 900.0,
+                "exact_effective": 0.0,
+                "scenario_effective": 900.0,
+                "effective_delta": 900.0
+              }
+            ]
+          }
+        ]
+      },
+      "plain_english_diagnosis": "Score vs exact = 0.6000; exact_match=False; overlap=4/5; position_hits=0/5; ndcg@5=0.6608. Diagnosis confidence: high. Best output cluster matched with top5 [2005, 2000, 2001, 2002, 2008]. Within that cluster, the answer is equally consistent with scenarios ['generic_dayfirst_false__replace', 'slash_monthfirst__replace']. Likely issue(s): slash dates likely read as month/day instead of day/month; generic parser likely used instead of explicit formats. Missing correct IDs: [2004]. Unexpected extra IDs: [2005]."
+    },
+    {
+      "model_answer": [
+        2000,
+        2001,
+        2002,
+        2008,
+        2004
+      ],
+      "frequency": 1,
+      "score_vs_exact": {
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "exact_match": true,
+        "overlap_count": 5,
+        "overlap_score": 1.0,
+        "position_hits": 5,
+        "position_score": 1.0,
+        "ndcg_at_5": 1.0,
+        "missing_ids": [],
+        "extra_ids": [],
+        "final_score": 1.0
+      },
+      "diagnosis_ambiguous": false,
+      "diagnosis_confidence": null,
+      "diagnosis_best_score": 1.0,
+      "cluster_level_ambiguity": false,
+      "scenario_level_ambiguity": false,
+      "best_explaining_clusters": [],
+      "all_cluster_matches": [],
+      "explanation": {
+        "missing_ids": [],
+        "extra_ids": []
+      },
+      "plain_english_diagnosis": "Exact match to the ground truth. No failure-mode diagnosis is needed for this answer."
+    },
+    {
+      "model_answer": [
+        2007,
+        2008,
+        2005,
+        2006,
+        2000
+      ],
+      "frequency": 1,
+      "score_vs_exact": {
+        "valid": true,
+        "error": null,
+        "correct_answer": [
+          2000,
+          2001,
+          2002,
+          2008,
+          2004
+        ],
+        "model_answer": [
+          2007,
+          2008,
+          2005,
+          2006,
+          2000
+        ],
+        "exact_match": false,
+        "overlap_count": 2,
+        "overlap_score": 0.4,
+        "position_hits": 0,
+        "position_score": 0.0,
+        "ndcg_at_5": 0.3452,
+        "missing_ids": [
+          2001,
+          2002,
+          2004
+        ],
+        "extra_ids": [
+          2005,
+          2006,
+          2007
+        ],
+        "final_score": 0.3
+      },
+      "diagnosis_ambiguous": false,
+      "diagnosis_confidence": "low",
+      "diagnosis_best_score": 0.65,
+      "cluster_level_ambiguity": false,
+      "scenario_level_ambiguity": false,
+      "best_explaining_clusters": [
+        {
+          "scenario_names": [
+            "refund_lifo_any_month__replace"
+          ],
+          "top5": [
+            2000,
+            2008,
+            2004,
+            2005,
+            2006
+          ],
+          "score_vs_model": 0.65,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2000,
+              2008,
+              2004,
+              2005,
+              2006
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.8304,
+            "missing_ids": [
+              2007
+            ],
+            "extra_ids": [
+              2004
+            ],
+            "final_score": 0.65
+          }
+        }
+      ],
+      "all_cluster_matches": [
+        {
+          "scenario_names": [
+            "refund_lifo_any_month__replace"
+          ],
+          "top5": [
+            2000,
+            2008,
+            2004,
+            2005,
+            2006
+          ],
+          "score_vs_model": 0.65,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2000,
+              2008,
+              2004,
+              2005,
+              2006
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.8304,
+            "missing_ids": [
+              2007
+            ],
+            "extra_ids": [
+              2004
+            ],
+            "final_score": 0.65
+          }
+        },
+        {
+          "scenario_names": [
+            "generic_dayfirst_true__replace"
+          ],
+          "top5": [
+            2006,
+            2007,
+            2000,
+            2001,
+            2008
+          ],
+          "score_vs_model": 0.6,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2006,
+              2007,
+              2000,
+              2001,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 4,
+            "overlap_score": 0.8,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.8539,
+            "missing_ids": [
+              2005
+            ],
+            "extra_ids": [
+              2001
+            ],
+            "final_score": 0.6
+          }
+        },
+        {
+          "scenario_names": [
+            "exact__add"
+          ],
+          "top5": [
+            2007,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 0.5,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2007,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 1,
+            "position_score": 0.2,
+            "ndcg_at_5": 0.6844,
+            "missing_ids": [
+              2005,
+              2006
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.5
+          }
+        },
+        {
+          "scenario_names": [
+            "dash_dayfirst__add"
+          ],
+          "top5": [
+            2006,
+            2007,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2006,
+              2007,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.7227,
+            "missing_ids": [
+              2005,
+              2008
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "dash_dayfirst__replace"
+          ],
+          "top5": [
+            2006,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2006,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.6844,
+            "missing_ids": [
+              2005,
+              2007
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "generic_dayfirst_false__replace",
+            "slash_monthfirst__replace"
+          ],
+          "top5": [
+            2005,
+            2000,
+            2001,
+            2002,
+            2008
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2005,
+              2000,
+              2001,
+              2002,
+              2008
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.6844,
+            "missing_ids": [
+              2006,
+              2007
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "ignore_signup_gate__replace"
+          ],
+          "top5": [
+            2005,
+            2006,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2005,
+              2006,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.7227,
+            "missing_ids": [
+              2007,
+              2008
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "refund_direct_subtract__replace"
+          ],
+          "top5": [
+            2000,
+            2001,
+            2008,
+            2004,
+            2005
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2000,
+              2001,
+              2008,
+              2004,
+              2005
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.6399,
+            "missing_ids": [
+              2006,
+              2007
+            ],
+            "extra_ids": [
+              2001,
+              2004
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "slash_monthfirst__add"
+          ],
+          "top5": [
+            2005,
+            2007,
+            2000,
+            2001,
+            2002
+          ],
+          "score_vs_model": 0.45,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2005,
+              2007,
+              2000,
+              2001,
+              2002
+            ],
+            "exact_match": false,
+            "overlap_count": 3,
+            "overlap_score": 0.6,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.7227,
+            "missing_ids": [
+              2006,
+              2008
+            ],
+            "extra_ids": [
+              2001,
+              2002
+            ],
+            "final_score": 0.45
+          }
+        },
+        {
+          "scenario_names": [
+            "refund_fifo_same_month__replace"
+          ],
+          "top5": [
+            2000,
+            2001,
+            2002,
+            2004,
+            2005
+          ],
+          "score_vs_model": 0.3,
+          "score_detail": {
+            "valid": true,
+            "error": null,
+            "correct_answer": [
+              2007,
+              2008,
+              2005,
+              2006,
+              2000
+            ],
+            "model_answer": [
+              2000,
+              2001,
+              2002,
+              2004,
+              2005
+            ],
+            "exact_match": false,
+            "overlap_count": 2,
+            "overlap_score": 0.4,
+            "position_hits": 0,
+            "position_score": 0.0,
+            "ndcg_at_5": 0.4704,
+            "missing_ids": [
+              2006,
+              2007,
+              2008
+            ],
+            "extra_ids": [
+              2001,
+              2002,
+              2004
+            ],
+            "final_score": 0.3
+          }
+        }
+      ],
+      "explanation": {
+        "missing_ids": [
+          {
+            "customer": {
+              "customer_id": 2001,
+              "rank": 2,
+              "final_adjusted_spend": 1550.0
+            },
+            "scenario_customer": {
+              "customer_id": 2001,
+              "rank": 9,
+              "final_adjusted_spend": 700.0
+            },
+            "customer_changed": true,
+            "rank_shift": 7,
+            "effective_spend_shift": -850.0,
+            "change_driver": "self_changed",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2005,
+                "rank": 4,
+                "final_adjusted_spend": 1390.0
+              },
+              {
+                "customer_id": 2006,
+                "rank": 5,
+                "final_adjusted_spend": 1380.0
+              },
+              {
+                "customer_id": 2007,
+                "rank": 6,
+                "final_adjusted_spend": 1370.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": [
+              {
+                "month": "2024-02",
+                "exact_computed": 850.0,
+                "scenario_computed": 0.0,
+                "exact_effective": 850.0,
+                "scenario_effective": 0.0,
+                "effective_delta": -850.0
+              }
+            ]
+          },
+          {
+            "customer": {
+              "customer_id": 2002,
+              "rank": 3,
+              "final_adjusted_spend": 1500.0
+            },
+            "scenario_customer": {
+              "customer_id": 2002,
+              "rank": 10,
+              "final_adjusted_spend": 600.0
+            },
+            "customer_changed": true,
+            "rank_shift": 7,
+            "effective_spend_shift": -900.0,
+            "change_driver": "self_changed",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2005,
+                "rank": 4,
+                "final_adjusted_spend": 1390.0
+              },
+              {
+                "customer_id": 2006,
+                "rank": 5,
+                "final_adjusted_spend": 1380.0
+              },
+              {
+                "customer_id": 2007,
+                "rank": 6,
+                "final_adjusted_spend": 1370.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": [
+              {
+                "month": "2024-02",
+                "exact_computed": 900.0,
+                "scenario_computed": 0.0,
+                "exact_effective": 900.0,
+                "scenario_effective": 0.0,
+                "effective_delta": -900.0
+              }
+            ]
+          },
+          {
+            "customer": {
+              "customer_id": 2004,
+              "rank": 5,
+              "final_adjusted_spend": 1400.0
+            },
+            "scenario_customer": {
+              "customer_id": 2004,
+              "rank": 3,
+              "final_adjusted_spend": 1400.0
+            },
+            "customer_changed": false,
+            "rank_shift": -2,
+            "effective_spend_shift": 0.0,
+            "change_driver": "displaced_by_other",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2005,
+                "rank": 4,
+                "final_adjusted_spend": 1390.0
+              },
+              {
+                "customer_id": 2006,
+                "rank": 5,
+                "final_adjusted_spend": 1380.0
+              },
+              {
+                "customer_id": 2007,
+                "rank": 6,
+                "final_adjusted_spend": 1370.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": []
+          }
+        ],
+        "extra_ids": [
+          {
+            "customer": {
+              "customer_id": 2005,
+              "rank": 6,
+              "final_adjusted_spend": 1390.0
+            },
+            "scenario_customer": {
+              "customer_id": 2005,
+              "rank": 4,
+              "final_adjusted_spend": 1390.0
+            },
+            "customer_changed": false,
+            "rank_shift": -2,
+            "effective_spend_shift": 0.0,
+            "change_driver": "promoted_by_other",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2001,
+                "rank": 2,
+                "final_adjusted_spend": 1550.0
+              },
+              {
+                "customer_id": 2002,
+                "rank": 3,
+                "final_adjusted_spend": 1500.0
+              },
+              {
+                "customer_id": 2004,
+                "rank": 5,
+                "final_adjusted_spend": 1400.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": []
+          },
+          {
+            "customer": {
+              "customer_id": 2006,
+              "rank": 7,
+              "final_adjusted_spend": 1380.0
+            },
+            "scenario_customer": {
+              "customer_id": 2006,
+              "rank": 5,
+              "final_adjusted_spend": 1380.0
+            },
+            "customer_changed": false,
+            "rank_shift": -2,
+            "effective_spend_shift": 0.0,
+            "change_driver": "promoted_by_other",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2001,
+                "rank": 2,
+                "final_adjusted_spend": 1550.0
+              },
+              {
+                "customer_id": 2002,
+                "rank": 3,
+                "final_adjusted_spend": 1500.0
+              },
+              {
+                "customer_id": 2004,
+                "rank": 5,
+                "final_adjusted_spend": 1400.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": []
+          },
+          {
+            "customer": {
+              "customer_id": 2007,
+              "rank": 8,
+              "final_adjusted_spend": 1370.0
+            },
+            "scenario_customer": {
+              "customer_id": 2007,
+              "rank": 6,
+              "final_adjusted_spend": 1370.0
+            },
+            "customer_changed": false,
+            "rank_shift": -2,
+            "effective_spend_shift": 0.0,
+            "change_driver": "promoted_by_other",
+            "displacing_or_displaced_counterparts": [
+              {
+                "customer_id": 2001,
+                "rank": 2,
+                "final_adjusted_spend": 1550.0
+              },
+              {
+                "customer_id": 2002,
+                "rank": 3,
+                "final_adjusted_spend": 1500.0
+              },
+              {
+                "customer_id": 2004,
+                "rank": 5,
+                "final_adjusted_spend": 1400.0
+              }
+            ],
+            "event_month_differences": [],
+            "monthly_differences": []
+          }
+        ]
+      },
+      "plain_english_diagnosis": "Score vs exact = 0.3000; exact_match=False; overlap=2/5; position_hits=0/5; ndcg@5=0.3452. Diagnosis confidence: low. Closest built-in explanation cluster: ['refund_lifo_any_month__replace'] with top5 [2000, 2008, 2004, 2005, 2006]. Plausible issue(s): refunds may be cancelling purchases across month boundaries. Treat this diagnosis as a partial resemblance rather than a definitive failure-mode attribution. Missing correct IDs: [2001, 2002, 2004]. Unexpected extra IDs: [2005, 2006, 2007]."
+    }
+  ]
+}

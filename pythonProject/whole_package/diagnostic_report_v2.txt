@@ -1,0 +1,36 @@
+Runs:   5
+Mean:   0.6200
+Median: 0.6000
+Min:    0.3000
+Max:    1.0000
+Stdev:  0.2227
+Exact-match rate: 0.2000
+Unique answers:   3
+Exact top 5: [2000, 2001, 2002, 2008, 2004]
+
+--- Diagnosis #1 ---
+Model answer: [2005, 2000, 2001, 2002, 2008]
+Frequency: 3
+Score vs exact: 0.6000
+Ambiguous diagnosis: True
+Diagnosis confidence: high
+Best scenario-match score: 1.0
+Score vs exact = 0.6000; exact_match=False; overlap=4/5; position_hits=0/5; ndcg@5=0.6608. Diagnosis confidence: high. Best output cluster matched with top5 [2005, 2000, 2001, 2002, 2008]. Within that cluster, the answer is equally consistent with scenarios ['generic_dayfirst_false__replace', 'slash_monthfirst__replace']. Likely issue(s): slash dates likely read as month/day instead of day/month; generic parser likely used instead of explicit formats. Missing correct IDs: [2004]. Unexpected extra IDs: [2005].
+
+--- Diagnosis #2 ---
+Model answer: [2000, 2001, 2002, 2008, 2004]
+Frequency: 1
+Score vs exact: 1.0000
+Ambiguous diagnosis: False
+Diagnosis confidence: None
+Best scenario-match score: 1.0
+Exact match to the ground truth. No failure-mode diagnosis is needed for this answer.
+
+--- Diagnosis #3 ---
+Model answer: [2007, 2008, 2005, 2006, 2000]
+Frequency: 1
+Score vs exact: 0.3000
+Ambiguous diagnosis: False
+Diagnosis confidence: low
+Best scenario-match score: 0.65
+Score vs exact = 0.3000; exact_match=False; overlap=2/5; position_hits=0/5; ndcg@5=0.3452. Diagnosis confidence: low. Closest built-in explanation cluster: ['refund_lifo_any_month__replace'] with top5 [2000, 2008, 2004, 2005, 2006]. Plausible issue(s): refunds may be cancelling purchases across month boundaries. Treat this diagnosis as a partial resemblance rather than a definitive failure-mode attribution. Missing correct IDs: [2001, 2002, 2004]. Unexpected extra IDs: [2005, 2006, 2007].
